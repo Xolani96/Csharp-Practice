@@ -8,21 +8,20 @@ namespace CSharpPractice
         static void Main(string[] args)
         {
             #region Self Practise
-            //Display<int> displayInt = new Display<int>();
+            //ReturnData<int> displayInt = new ReturnData<int>();
             //displayInt.Show(123);
 
-            //Display<double> displayDouble = new Display<double>();
+            //ReturnData<double> displayDouble = new ReturnData<double>();
             //displayDouble.Show(123.35425);
 
-            //Display<string> displayString = new Display<string>();
+            //ReturnData<string> displayString = new ReturnData<string>();
             //displayString.Show("Jesus Christ");
 
-            //Display<char> displayChar = new Display<char>();
+            //ReturnData<char> displayChar = new ReturnData<char>();
             //displayChar.Show('J');
 
-            //store values inside a list
+            //store values inside a Int list
             DataStore<int> intStoreInList = new DataStore<int>();
-            
             intStoreInList.datalist.Add(12);
             intStoreInList.datalist.Add(2);
             intStoreInList.datalist.Add(4);
@@ -31,14 +30,37 @@ namespace CSharpPractice
             intStoreInList.datalist.Add(16);
             intStoreInList.datalist.Add(7);
 
+            //sort the given data
             SortData<int> srt = new SortData<int>();
-            ReturnData<int> retList = new ReturnData<int>();
-            retList.DisplayList(srt.SortList(intStoreInList.datalist));
+            srt.GenBubbleSort(intStoreInList.datalist);
+            //display the stored data
+            //ReturnData<int> retList = new ReturnData<int>();
+            //retList.DisplayList();
+            foreach (var item in intStoreInList.datalist)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            DataStore<string> strStoreInList = new DataStore<string>();
+            strStoreInList.datalist.Add("Xolani");
+            strStoreInList.datalist.Add("Ziyanda");
+            strStoreInList.datalist.Add("Mom");
+            strStoreInList.datalist.Add("Simphiwe");
+            strStoreInList.datalist.Add("Dad");
+
+            ////sort the given data
+            //SortData<string> srt2 = new SortData<string>();
+            ////display the stored data
+            //ReturnData<string> retListStr = new ReturnData<string>();
+            //retListStr.DisplayList(srt2.SortList(strStoreInList.datalist));
+
+            
 
 
             #endregion
             #region Article Practise
-           
+
             //DataStore<string> strStoreInArray = new DataStore<string>();
             //strStoreInArray.Data = "some data";
             ////copy values from 1 array to another 
@@ -64,76 +86,4 @@ namespace CSharpPractice
             Console.ReadLine();
         }
     }
-    #region SelfPractise
-    class Display<T>
-    {
-        public void Show(T value)
-        {
-            Console.WriteLine(value);
-        }
-    }
-    #endregion
-    #region Article Practise
-    class DataStore<T>
-    {
-        //Generic field , it cannot be initialized.
-        public T Data { get; set; }
-        //Generic Array
-        public T[] dataArray = new T[5];
-        public List<T> datalist = new List<T>();
-    }
-
-    class ReturnData<T>
-    {
-        public void DisplayArray(T[] initArray, int arrLenght)
-        {
-            for (int i = 0; i < initArray.Length; i++)
-            {
-                if(!(initArray[i] == null))
-                {
-                    Console.WriteLine(initArray[i]);
-                }
-            }
-        }
-        public void DisplayList( List<T> initList)
-        {
-            foreach (var item in initList)
-            {
-                Console.WriteLine(item);
-            }
-        }
-    }
-    class SortData<T>
-    {
-        //how to sort generic types
-       public List<T> SortList(List<T> li)
-        {
-            //List<T> temp = new List<T>();
-            //for (int i = 0; i < li.Count; i++)
-            //{
-            //    for (int j = 0; j < li.Count; j++)
-            //    {
-            //        if (Comparison(li[i], li[j]) < 0)
-            //        {
-
-            //        }
-            //    }
-            //}
-            li.Sort();
-            List<T> temp = new List<T>();
-            foreach (var item in li)
-            {
-                temp.Add(item);
-            }
-            return temp;
-        }
-    }
-    class KeyValuPair<Tkey,Tvalue>
-    {
-        //Generic field , it cannot be initialized.
-        public Tkey Key { get; set; }
-        //Generic field , it cannot be initialized.
-        public Tvalue Value { get; set; } 
-    }
-    #endregion
 }
