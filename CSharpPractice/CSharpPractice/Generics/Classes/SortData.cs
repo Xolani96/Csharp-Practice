@@ -18,25 +18,42 @@ namespace CSharpPractice
             return temp;
         }
 
-        public void GenBubbleSort<T>(List<T> list) where T:IComparable
+        public void GenBubbleSort<T>(T[] array) where T:IComparable
         {
-            for (int i = 0; i < list.Count ; i++)
+            for (int i = array.Length; i>1; i--)
             {
-                for (int j = 0; j < list.Count; j++)
+                for (int j = 0; j < array.Length-1; j++)
                 {
-                    if(list[i].CompareTo(list[i+1])<0)
+                    if(array[j].CompareTo(array[j+1])>0)
                     {
-                        Swap(list,i-1,i);
+                        GenSwap(array, j,j+1);
                     }
                 }
             }
         }
+        public void InsertionSort(int[] array)
+        {
+            //Problem: it skips the first value and sorts the rest of the values,
+            int j,key, i;
+            for (i = 0; i < array.Length; i++)
+            {
+                key = array[i];
+                j = i - 1;
+                while (j>0 && array[j] > key)
+                {
+                    array[j + 1] = array[j];
+                    j = j - 1;
+                }
+                array[j + 1] = key;
+            }
+        }
 
-        public void Swap<T>(List<T> source, int i, int j)
+        public void GenSwap<T>(T[] source, int i, int j)
         {
             T temp = source[i];
             source[i] = source[j];
             source[j] = temp;
         }
+       
     }
 }

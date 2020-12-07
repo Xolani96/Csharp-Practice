@@ -30,24 +30,31 @@ namespace CSharpPractice
             intStoreInList.datalist.Add(16);
             intStoreInList.datalist.Add(7);
 
-            //sort the given data
+            //store values inside an array
+            //numbers
+            DataStore<int> intStoreInArray = new DataStore<int>();
+            int[] numbers = new int[] { 65, 2, 45, 1, 34, };
+            Array.Copy(numbers, intStoreInArray.dataArray, intStoreInArray.dataArray.Length);
             SortData<int> srt = new SortData<int>();
-            srt.GenBubbleSort(intStoreInList.datalist);
-            //display the stored data
-            //ReturnData<int> retList = new ReturnData<int>();
-            //retList.DisplayList();
-            foreach (var item in intStoreInList.datalist)
-            {
-                Console.WriteLine(item);
-            }
+            srt.InsertionSort(intStoreInArray.dataArray);
+            ReturnData<int> returnArray = new ReturnData<int>();
+            returnArray.DisplayArray(intStoreInArray.dataArray, intStoreInArray.dataArray.Length);
 
+            //Letters
+            //DataStore<char> strStoreInArray = new DataStore<char>();
+            //char[] letter = new char[] { 'e', 'u', 'l', 'f', 'h' };
+            //Array.Copy(letter, strStoreInArray.dataArray, strStoreInArray.dataArray.Length);
+            //SortData<int> srt1 = new SortData<int>();
+            //srt1.GenBubbleSort(strStoreInArray.dataArray);
+            //ReturnData<char> returnArray1 = new ReturnData<char>();
+            //returnArray1.DisplayArray(strStoreInArray.dataArray, strStoreInArray.dataArray.Length);
 
-            DataStore<string> strStoreInList = new DataStore<string>();
-            strStoreInList.datalist.Add("Xolani");
-            strStoreInList.datalist.Add("Ziyanda");
-            strStoreInList.datalist.Add("Mom");
-            strStoreInList.datalist.Add("Simphiwe");
-            strStoreInList.datalist.Add("Dad");
+            //DataStore<string> strStoreInList = new DataStore<string>();
+            //strStoreInList.datalist.Add("Xolani");
+            //strStoreInList.datalist.Add("Ziyanda");
+            //strStoreInList.datalist.Add("Mom");
+            //strStoreInList.datalist.Add("Simphiwe");
+            //strStoreInList.datalist.Add("Dad");
 
             ////sort the given data
             //SortData<string> srt2 = new SortData<string>();
